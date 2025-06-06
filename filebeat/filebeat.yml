@@ -1,0 +1,21 @@
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: true
+
+filebeat.modules:
+  - module: nginx
+    access:
+      enabled: true
+    error:
+      enabled: true
+
+  - module: suricata
+    eve:
+      enabled: true
+
+output.elasticsearch:
+  hosts: ["http://172.16.0.13:9200"]
+  ssl.verification_mode: none
+
+setup.kibana:
+  host: "http://172.16.0.12:5601"

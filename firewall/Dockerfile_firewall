@@ -1,0 +1,6 @@
+FROM ubuntu:22.04
+RUN apt-get update && apt-get install -y tcpreplay iptables iputils-ping iproute2 python3 python3-pip
+COPY ./firewall.sh /usr/local/bin/firewall.sh
+
+RUN pip3 install scapy
+CMD ["bash", "-c", " sysctl -w net.ipv4.ip_forward=1 && bash /usr/local/bin/firewall.sh && tail -f /dev/null"]

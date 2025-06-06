@@ -1,0 +1,36 @@
+[2025-06-01T19:19:40.593516+02:00] json_error_renderer.ERROR: 
+[404] Not found. in /var/www/html/backend/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php on line 76.
+Backtrace:
+#0 /var/www/html/backend/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php(44): Slim\Middleware\RoutingMiddleware->performRouting(Object(Slim\Http\ServerRequest))
+#1 /var/www/html/backend/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\RoutingMiddleware->process(Object(Slim\Http\ServerRequest), Object(Psr\Http\Server\RequestHandlerInterface@anonymous))
+#2 /var/www/html/backend/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(77): Psr\Http\Server\RequestHandlerInterface@anonymous->handle(Object(Slim\Http\ServerRequest))
+#3 /var/www/html/backend/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\ErrorMiddleware->process(Object(Slim\Http\ServerRequest), Object(Psr\Http\Server\RequestHandlerInterface@anonymous))
+#4 /var/www/html/backend/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle(Object(Slim\Http\ServerRequest))
+#5 /var/www/html/backend/vendor/slim/slim/Slim/App.php(209): Slim\MiddlewareDispatcher->handle(Object(Slim\Http\ServerRequest))
+#6 /var/www/html/backend/vendor/slim/slim/Slim/App.php(193): Slim\App->handle(Object(Slim\Http\ServerRequest))
+#7 /var/www/html/backend/public/index.php(19): Slim\App->run()
+#8 {main} [] []
+[2025-06-01T19:20:05.058441+02:00] json_error_renderer.ERROR: 
+[404] Not found. in /var/www/html/backend/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php on line 76.
+Backtrace:
+#0 /var/www/html/backend/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php(44): Slim\Middleware\RoutingMiddleware->performRouting(Object(Slim\Http\ServerRequest))
+#1 /var/www/html/backend/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\RoutingMiddleware->process(Object(Slim\Http\ServerRequest), Object(Psr\Http\Server\RequestHandlerInterface@anonymous))
+#2 /var/www/html/backend/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(77): Psr\Http\Server\RequestHandlerInterface@anonymous->handle(Object(Slim\Http\ServerRequest))
+#3 /var/www/html/backend/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\ErrorMiddleware->process(Object(Slim\Http\ServerRequest), Object(Psr\Http\Server\RequestHandlerInterface@anonymous))
+#4 /var/www/html/backend/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle(Object(Slim\Http\ServerRequest))
+#5 /var/www/html/backend/vendor/slim/slim/Slim/App.php(209): Slim\MiddlewareDispatcher->handle(Object(Slim\Http\ServerRequest))
+#6 /var/www/html/backend/vendor/slim/slim/Slim/App.php(193): Slim\App->handle(Object(Slim\Http\ServerRequest))
+#7 /var/www/html/backend/public/index.php(19): Slim\App->run()
+#8 {main} [] []
+[2025-06-01T19:21:11.161360+02:00] json_error_renderer.ERROR: 
+[404] Not found. in /var/www/html/backend/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php on line 76.
+Backtrace:
+#0 /var/www/html/backend/vendor/slim/slim/Slim/Middleware/RoutingMiddleware.php(44): Slim\Middleware\RoutingMiddleware->performRouting(Object(Slim\Http\ServerRequest))
+#1 /var/www/html/backend/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\RoutingMiddleware->process(Object(Slim\Http\ServerRequest), Object(Psr\Http\Server\RequestHandlerInterface@anonymous))
+#2 /var/www/html/backend/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(77): Psr\Http\Server\RequestHandlerInterface@anonymous->handle(Object(Slim\Http\ServerRequest))
+#3 /var/www/html/backend/vendor/slim/slim/Slim/MiddlewareDispatcher.php(129): Slim\Middleware\ErrorMiddleware->process(Object(Slim\Http\ServerRequest), Object(Psr\Http\Server\RequestHandlerInterface@anonymous))
+#4 /var/www/html/backend/vendor/slim/slim/Slim/MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle(Object(Slim\Http\ServerRequest))
+#5 /var/www/html/backend/vendor/slim/slim/Slim/App.php(209): Slim\MiddlewareDispatcher->handle(Object(Slim\Http\ServerRequest))
+#6 /var/www/html/backend/vendor/slim/slim/Slim/App.php(193): Slim\App->handle(Object(Slim\Http\ServerRequest))
+#7 /var/www/html/backend/public/index.php(19): Slim\App->run()
+#8 {main} [] []

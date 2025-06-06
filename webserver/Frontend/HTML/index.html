@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+<header>
+    <nav>
+        <h1 class="titulo-principal">Proyecto de la asignatura TDW</h1>
+        <div class="logo">
+            <button class="logo-button" id="login-bottom">
+              <i class="fa-solid fa-user"></i> Iniciar sesión
+            </button>
+          
+            <div class="dropdown-wrapper">
+              <button class="logo-button" id="perfil-bottom">
+                <i class="fa-solid fa-user"></i> Menú
+              </button>
+              <div class="dropdown-menu" id="dropdown-menu">
+                <button class="dropdown-item" id="ver-perfil">👤 Ver perfil</button>
+                <button class="dropdown-item" id="ver-panel">📖 Dashboard</button>
+
+                <button class="dropdown-item" id="logout-bottom">🚪 Cerrar sesión</button>
+              </div>
+              
+            </div>
+          </div>
+          
+          
+    </nav>
+    
+</header>
+
+<body>
+    <div class="portada">
+        <div class="cuadro">
+            <img src="../images/descarga (6).png" alt="">
+            <img src="../images/descarga-removebg-prev.png" alt="">
+            <img src="../images/descarga-removebg-preview.png" alt="">
+            <img src="../images/descarga__5_-removebg-preview.png" alt="">
+            <img src="../images/descarga__1_-removebg-preview.png" alt="">
+            <img src="../images/descarga__2_-removebg-preview.png" alt="">
+            <img src="../images/descarga__2_-removebg.png" alt="">
+            <img src="../images/descarga__3_-removebg-preview.png" alt="">
+            <img src="../images/descarga__4_-removebg-preview.png" alt="">
+            <img src="../images/descarga__5.png" alt="">
+            <img src="../images/descarga__1_-remove.png" alt="">
+            <img src="../images/descarga__7_-removebg-preview.png" alt="">
+            <img src="../images/descarga__8_-removebg-preview.png" alt="">
+            <img src="../images/images-removebg-preview.png" alt="">
+            <img src="../images/images__1_-removebg-preview.png" alt="">
+        </div>
+    </div>
+    <div class="overlay">
+        <div class="banner">
+            <button class="cruz" id="cerrarLogin">✖</button>
+    
+            <div class="sesion" id="login">
+                <h2>Iniciar Sesión</h2>
+                <div class="formulario">
+                    <label for="usuario-login">Usuario</label>
+                    <input type="text" id="usuario-login" name="usuario">
+                    <label for="contrasena-login">Contraseña</label>
+                    <input type="password" id="contrasena-login" name="contrasena">
+                    <button class="form-btn">Iniciar Sesión</button>
+                    <p>¿No tienes cuenta? <button class="cambiar-formulario" id="cambiar-formulario-registro">Regístrate</button></p>
+                </div>
+            </div>
+    
+            <div class="sesion" id="registro">
+                <h2>¡¡Regístrate!!</h2>
+                <div class="formulario">
+                    <label for="usuario-registro">Nombre de usuario</label>
+                    <input type="text" id="usuario-registro" name="usuario">
+                    <label for="email-registro">Email</label>
+                    <input type="text" id="email-registro" name="email">
+                    <label for="contrasena-registro">Contraseña</label>
+                    <input type="password" id="contrasena-registro" name="contrasena">
+                    <label for="confirmar-contrasena">Confirmar Contraseña</label>
+                    <input type="password" id="confirmar-contrasena" name="confirmar-contrasena">
+                    <button class="form-btn">Registrarse</button>
+                    <p>¿Ya tienes cuenta? <button class="cambiar-formulario" id="cambiar-formulario-login">Inicia Sesión</button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <section id="personas">
+        <div class="titulo-con-boton">
+            <h2>Desarrolladores</h2>
+        </div>
+        <hr class="barra-fina">
+        <div class="carrusel-container">
+            <button class="prev" id="prev-1" >❮</button>
+
+            <div class="carrusel" id="carrusel1">
+                
+            </div>
+            <button class="next" id="next-1" >❯</button>
+        </div>
+
+        
+    </section>
+
+    
+    <section id="productos">
+        <div class="titulo-con-boton">
+            <h2>Programas</h2>
+        </div>
+        <hr class="barra-fina">
+        <div class="carrusel-container">
+            <button class="prev" id="prev-2" >❮</button>
+            <div class="carrusel" id="carrusel2">
+                
+            </div>
+            <button class="next" id="next-2" >❯</button>
+        </div>
+
+    </section>
+
+
+    <section id="entidades">
+        <div class="titulo-con-boton">
+            <h2>Empresas</h2>
+        </div>        
+        <hr class="barra-fina">
+        <div class="carrusel-container" >
+            <button class="prev" id="prev-3" >❮</button>
+            <div class="carrusel" id="carrusel3">
+                
+            </div>
+            <button class="next" id="next-3" >❯</button>
+        </div>
+
+    </section>
+
+    <section id="asociaciones">
+        <div class="titulo-con-boton">
+            <h2>Asociaciones</h2>
+        </div>        
+        <hr class="barra-fina">
+        <div class="carrusel-container" >
+            <button class="prev" id="prev-4" >❮</button>
+            <div class="carrusel" id="carrusel4">
+                
+            </div>
+            <button class="next" id="next-4" >❯</button>
+        </div>
+
+    </section>
+
+
+    
+    <script type="module" src="../Vista/VistaApp.js"></script>   
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+</body>
+</html>

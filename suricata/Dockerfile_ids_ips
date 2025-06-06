@@ -1,0 +1,17 @@
+FROM ubuntu:20.04
+
+RUN apt-get update && \
+    apt-get install -y iptables iputils-ping iproute2 software-properties-common && \
+    add-apt-repository ppa:oisf/suricata-stable && \
+    apt update && \
+    apt install -y suricata jq python3 python3-pip && \
+    suricata-update
+
+    RUN pip3 install scapy numpy scikit-learn pandas
+
+
+CMD ["bash", "-c", "sysctl -w net.ipv4.ip_forward=1"]
+
+COPY entrypoint.sh /root/entrypoint.sh
+RUN chmod +x /root/entrypoint.sh
+ENTRYPOINT ["/root/entrypoint.sh"]

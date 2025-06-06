@@ -1,0 +1,27 @@
+alert tcp $EXTERNAL_NET any -> $HOME_NET ![80,443] (flags:S; msg:"[ALERTA] Posible escaneo de puertos SYN detectado"; sid:2000001; rev:2; threshold:type both, track by_src, count 20, seconds 10;)
+alert tcp $EXTERNAL_NET any -> $HOME_NET ![80,443] (flags:0; msg:"[ALERTA] NULL scan detectado"; sid:2000002; rev:1; threshold:type both, track by_src, count 10, seconds 10;)
+alert tcp $EXTERNAL_NET any -> $HOME_NET ![80,443] (flags:F; msg:"[ALERTA] FIN scan detectado"; sid:2000003; rev:1; threshold:type both, track by_src, count 10, seconds 10;)
+alert tcp $EXTERNAL_NET any -> $HOME_NET ![80,443] (flags:FPUR; msg:"[ALERTA] XMAS scan detectado"; sid:2000004; rev:1; threshold:type both, track by_src, count 10, seconds 10;)
+alert udp $EXTERNAL_NET any -> $HOME_NET ![80,443] (msg:"[ALERTA] Posible escaneo de puertos UDP"; sid:2000006; rev:1; threshold:type both, track by_src, count 30, seconds 10;)
+
+alert http $EXTERNAL_NET any -> $HOME_NET any (msg:"Login attempt detected"; content:"POST"; http_method; content:"/access_token"; http_uri; sid:1000001;)
+
+alert http $EXTERNAL_NET any -> $HOME_NET any (msg:"GET /persons/ accessed"; content:"GET"; http_method; content:"/persons/"; http_uri; sid:1001001;)
+alert http $EXTERNAL_NET any -> $HOME_NET any (msg:"POST /persons/ accessed"; content:"POST"; http_method; content:"/persons/"; http_uri; sid:1001002;)
+alert http $EXTERNAL_NET any -> $HOME_NET any (msg:"PUT /persons/ accessed"; content:"PUT"; http_method; content:"/persons/"; http_uri; sid:1001003;)
+alert http $EXTERNAL_NET any -> $HOME_NET any (msg:"DELETE /persons/ accessed"; content:"DELETE"; http_method; content:"/persons/"; http_uri; sid:1001004;)
+
+alert http $EXTERNAL_NET any -> $HOME_NET any (msg:"GET /products/ accessed"; content:"GET"; http_method; content:"/products/"; http_uri; sid:1001011;)
+alert http $EXTERNAL_NET any -> $HOME_NET any (msg:"POST /products/ accessed"; content:"POST"; http_method; content:"/products/"; http_uri; sid:1001012;)
+alert http $EXTERNAL_NET any -> $HOME_NET any (msg:"PUT /products/ accessed"; content:"PUT"; http_method; content:"/products/"; http_uri; sid:1001013;)
+alert http $EXTERNAL_NET any -> $HOME_NET any (msg:"DELETE /products/ accessed"; content:"DELETE"; http_method; content:"/products/"; http_uri; sid:1001014;)
+
+alert http $EXTERNAL_NET any -> $HOME_NET any (msg:"GET /asociaciones/ accessed"; content:"GET"; http_method; content:"/asociaciones/"; http_uri; sid:1001021;)
+alert http $EXTERNAL_NET any -> $HOME_NET any (msg:"POST /asociaciones/ accessed"; content:"POST"; http_method; content:"/asociaciones/"; http_uri; sid:1001022;)
+alert http $EXTERNAL_NET any -> $HOME_NET any (msg:"PUT /asociaciones/ accessed"; content:"PUT"; http_method; content:"/asociaciones/"; http_uri; sid:1001023;)
+alert http $EXTERNAL_NET any -> $HOME_NET any (msg:"DELETE /asociaciones/ accessed"; content:"DELETE"; http_method; content:"/asociaciones/"; http_uri; sid:1001024;)
+
+alert http $EXTERNAL_NET any -> $HOME_NET any (msg:"GET /entities/ accessed"; content:"GET"; http_method; content:"/entities/"; http_uri; sid:1001031;)
+alert http $EXTERNAL_NET any -> $HOME_NET any (msg:"POST /entities/ accessed"; content:"POST"; http_method; content:"/entities/"; http_uri; sid:1001032;)
+alert http $EXTERNAL_NET any -> $HOME_NET any (msg:"PUT /entities/ accessed"; content:"PUT"; http_method; content:"/entities/"; http_uri; sid:1001033;)
+alert http $EXTERNAL_NET any -> $HOME_NET any (msg:"DELETE /entities/ accessed"; content:"DELETE"; http_method; content:"/entities/"; http_uri; sid:1001034;)

@@ -1,0 +1,48 @@
+[2025-04-21T16:43:21.053609+02:00] json_error_renderer.ERROR: 
+[405] Method not allowed. Must be one of: OPTIONS in C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\Middleware\RoutingMiddleware.php on line 79.
+Backtrace:
+#0 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\Middleware\RoutingMiddleware.php(44): Slim\Middleware\RoutingMiddleware->performRouting(Object(Slim\Http\ServerRequest))
+#1 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\MiddlewareDispatcher.php(129): Slim\Middleware\RoutingMiddleware->process(Object(Slim\Http\ServerRequest), Object(Psr\Http\Server\RequestHandlerInterface@anonymous))
+#2 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\Middleware\ErrorMiddleware.php(77): Psr\Http\Server\RequestHandlerInterface@anonymous->handle(Object(Slim\Http\ServerRequest))
+#3 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\MiddlewareDispatcher.php(129): Slim\Middleware\ErrorMiddleware->process(Object(Slim\Http\ServerRequest), Object(Psr\Http\Server\RequestHandlerInterface@anonymous))
+#4 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle(Object(Slim\Http\ServerRequest))
+#5 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\App.php(209): Slim\MiddlewareDispatcher->handle(Object(Slim\Http\ServerRequest))
+#6 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\App.php(193): Slim\App->handle(Object(Slim\Http\ServerRequest))
+#7 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\public\index.php(19): Slim\App->run()
+#8 {main} [] []
+[2025-04-21T17:18:42.569957+02:00] json_error_renderer.ERROR: 
+[404] Not found. in C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\Middleware\RoutingMiddleware.php on line 76.
+Backtrace:
+#0 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\Middleware\RoutingMiddleware.php(44): Slim\Middleware\RoutingMiddleware->performRouting(Object(Slim\Http\ServerRequest))
+#1 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\MiddlewareDispatcher.php(129): Slim\Middleware\RoutingMiddleware->process(Object(Slim\Http\ServerRequest), Object(Psr\Http\Server\RequestHandlerInterface@anonymous))
+#2 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\Middleware\ErrorMiddleware.php(77): Psr\Http\Server\RequestHandlerInterface@anonymous->handle(Object(Slim\Http\ServerRequest))
+#3 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\MiddlewareDispatcher.php(129): Slim\Middleware\ErrorMiddleware->process(Object(Slim\Http\ServerRequest), Object(Psr\Http\Server\RequestHandlerInterface@anonymous))
+#4 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle(Object(Slim\Http\ServerRequest))
+#5 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\App.php(209): Slim\MiddlewareDispatcher->handle(Object(Slim\Http\ServerRequest))
+#6 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\App.php(193): Slim\App->handle(Object(Slim\Http\ServerRequest))
+#7 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\public\index.php(19): Slim\App->run()
+#8 {main} [] []
+[2025-04-21T17:19:29.735603+02:00] json_error_renderer.ERROR: 
+[404] Not found. in C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\Middleware\RoutingMiddleware.php on line 76.
+Backtrace:
+#0 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\Middleware\RoutingMiddleware.php(44): Slim\Middleware\RoutingMiddleware->performRouting(Object(Slim\Http\ServerRequest))
+#1 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\MiddlewareDispatcher.php(129): Slim\Middleware\RoutingMiddleware->process(Object(Slim\Http\ServerRequest), Object(Psr\Http\Server\RequestHandlerInterface@anonymous))
+#2 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\Middleware\ErrorMiddleware.php(77): Psr\Http\Server\RequestHandlerInterface@anonymous->handle(Object(Slim\Http\ServerRequest))
+#3 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\MiddlewareDispatcher.php(129): Slim\Middleware\ErrorMiddleware->process(Object(Slim\Http\ServerRequest), Object(Psr\Http\Server\RequestHandlerInterface@anonymous))
+#4 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle(Object(Slim\Http\ServerRequest))
+#5 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\App.php(209): Slim\MiddlewareDispatcher->handle(Object(Slim\Http\ServerRequest))
+#6 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\App.php(193): Slim\App->handle(Object(Slim\Http\ServerRequest))
+#7 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\public\index.php(19): Slim\App->run()
+#8 {main} [] []
+[2025-04-21T17:21:07.850480+02:00] json_error_renderer.ERROR: 
+[404] Not found. in C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\Middleware\RoutingMiddleware.php on line 76.
+Backtrace:
+#0 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\Middleware\RoutingMiddleware.php(44): Slim\Middleware\RoutingMiddleware->performRouting(Object(Slim\Http\ServerRequest))
+#1 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\MiddlewareDispatcher.php(129): Slim\Middleware\RoutingMiddleware->process(Object(Slim\Http\ServerRequest), Object(Psr\Http\Server\RequestHandlerInterface@anonymous))
+#2 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\Middleware\ErrorMiddleware.php(77): Psr\Http\Server\RequestHandlerInterface@anonymous->handle(Object(Slim\Http\ServerRequest))
+#3 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\MiddlewareDispatcher.php(129): Slim\Middleware\ErrorMiddleware->process(Object(Slim\Http\ServerRequest), Object(Psr\Http\Server\RequestHandlerInterface@anonymous))
+#4 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\MiddlewareDispatcher.php(73): Psr\Http\Server\RequestHandlerInterface@anonymous->handle(Object(Slim\Http\ServerRequest))
+#5 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\App.php(209): Slim\MiddlewareDispatcher->handle(Object(Slim\Http\ServerRequest))
+#6 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\vendor\slim\slim\Slim\App.php(193): Slim\App->handle(Object(Slim\Http\ServerRequest))
+#7 C:\Users\ASUS\Desktop\Asignaturas\CUARTO\TDW\apiAnalesCiencia\public\index.php(19): Slim\App->run()
+#8 {main} [] []

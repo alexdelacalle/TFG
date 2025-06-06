@@ -1,0 +1,8 @@
+FROM docker.elastic.co/elasticsearch/elasticsearch:8.5.1
+USER root
+
+RUN apt-get update && apt-get install -y iptables iputils-ping iproute2 sudo && \
+    echo "elasticsearch ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
+    chown -R elasticsearch:elasticsearch /usr/share/elasticsearch
+
+USER elasticsearch

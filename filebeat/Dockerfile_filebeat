@@ -1,0 +1,22 @@
+FROM docker.elastic.co/beats/filebeat:8.5.1
+
+USER root
+
+RUN apt-get update && apt-get install -y sudo iproute2 iputils-ping bash
+
+RUN echo "\
+filebeat.inputs:\n\
+  - type: log\n\
+    enabled: true\n\
+    paths:\n\
+      - /var/log/nginx/access.log\n\
+      - /var/log/nginx/error.log\n\
+\n\
+output.elasticsearch:\n\
+  hosts: [\"https://172.16.0.13:9200\"]\n\
+  ssl.verification_mode: none\n\
+  username: \"elastic\"\n\
+  password: \"changeme\"\n\
+\n\
+setup.kibana:\n\
+  host: \"http://172.16.0.12:5601\"\n" > /usr/share/filebeat/filebeat.yml

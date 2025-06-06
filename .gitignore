@@ -1,0 +1,4 @@
+# .gitignore
+
+elasticsearch/data/
+suricata/suricata_logs/

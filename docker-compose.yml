@@ -1,0 +1,301 @@
+services:
+    firewall:
+        build:
+            context: ./firewall
+            dockerfile: Dockerfile_firewall
+        container_name: "firewall_nuevo"
+        privileged: true
+        command: >
+            bash -c "ip route del default via 172.31.0.2 2>/dev/null || true && 
+            ip route add default via 10.10.0.134 || true && 
+            python3 /usr/local/bin/modificar_paquetes.py &&
+            tail -f /dev/null"
+        volumes:
+            - ./firewall/fake_packets:/usr/local/bin/
+        cap_add:
+            - NET_ADMIN
+        networks:
+            external:
+                ipv4_address: 172.31.0.1
+            internal:
+                ipv4_address: 10.10.0.1
+        
+        
+    ids_ips:
+        build:
+            context: ./suricata
+            dockerfile: Dockerfile_ids_ips
+        container_name: "ids_ips_nuevo"
+        privileged: true  
+        cap_add:
+            - NET_ADMIN
+        networks:
+            internal:
+                ipv4_address: 10.10.0.134
+            middleNet:
+                ipv4_address: 10.10.1.215
+        volumes:
+            - ./suricata/monitor_suricata_alerts.py:/root/monitor_suricata_alerts.py  
+            - ./suricata/suricata.yaml:/etc/suricata/suricata.yaml
+            - ./suricata/local.rules:/var/lib/suricata/rules/local.rules
+            - ./suricata/alertScript.sh:/root/alertScript.sh  
+            - ./suricata/suricata_logs/eve.json:/var/log/suricata/eve.json       
+            - ./suricata/XSS_detection/XSS_dataset.csv:/root/XSS_dataset.csv
+            - ./suricata/XSS_detection/xss_training.py:/root/xss_training.py
+    router:
+        build:
+            context: ./router
+            dockerfile: Dockerfile_router
+        container_name: "router_nuevo"
+        privileged: true
+        command: >
+            bash -c "sysctl -w net.ipv4.ip_forward=1 && 
+            bash /usr/local/bin/router.sh && 
+            ip route del default via 172.16.0.2 2>/dev/null  && 
+            ip route add default via 10.10.1.215 && 
+            tail -f /dev/null"
+        cap_add:
+            - NET_ADMIN
+        networks:
+            middleNet:
+                ipv4_address: 10.10.1.1
+            fake:
+                ipv4_address: 172.16.0.1
+            real:
+                ipv4_address: 10.10.2.1
+        
+
+
+    real_webserver:
+        build:
+            context: ./webserver
+            dockerfile: DockerfileFrontend
+        container_name: "real_webserver_nuevo" 
+        command: >
+            sh -c "ip route del default via 10.10.2.2 &&
+                ip route add default via 10.10.2.1 &&
+                nginx -g 'daemon off;'"
+        cap_add:
+            - NET_ADMIN
+        networks:
+            real:
+                ipv4_address: 10.10.2.34
+
+    
+    real_backend:
+        build:
+            context: ./php
+            dockerfile: DockerfileBackend
+        container_name: php_nuevo
+        environment:
+            MYSQL_DATABASE: tdw_24_25
+        volumes:
+            - ./php/Backend:/var/www/html/backend
+        networks:
+            real:
+                ipv4_address: 10.10.2.102
+        depends_on:
+            - mysql
+    mysql:
+        image: mysql:latest
+        container_name: mysql_nuevo
+        environment:
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+        ports:
+            - ${DATABASE_PORT}:3306
+        networks:
+            real:
+                ipv4_address: 10.10.2.77
+    
+    fake_backend:
+        build:
+            context: ./php
+            dockerfile: DockerfileBackend
+        container_name: fake_php
+        environment:
+            MYSQL_DATABASE: tdw_24_25
+        volumes:
+            - ./php/FakeBackend:/var/www/html/backend
+        ports:
+            - ${BACKEND_PORT}:8001
+        networks:
+            fake:
+                ipv4_address: 172.16.0.123
+        depends_on:
+            - fake_mysql
+    fake_mysql:
+        image: mysql:latest
+        container_name: fake_mysql
+        environment:
+            MYSQL_DATABASE: ${FAKE_MYSQL_DATABASE}
+            MYSQL_USER: ${FAKE_MYSQL_USER}
+            MYSQL_PASSWORD: ${FAKE_MYSQL_PASSWORD}
+            MYSQL_ROOT_PASSWORD: ${FAKE_MYSQL_ROOT_PASSWORD}
+        networks:
+            fake:
+                ipv4_address: 172.16.0.70
+
+    
+    attacker:
+        build:
+            context: ./attackers
+            dockerfile: Dockerfile_attacker
+        container_name: "attacker_nuevo"
+        cap_add:
+            - NET_ADMIN
+        privileged: true
+        command: > 
+             bash -c "ip route del default via 172.31.0.2 &&
+                ip route add default via 172.31.0.1 &&
+                tail -f /dev/null"
+        networks:
+            external:
+                ipv4_address: 172.31.0.220
+
+
+    proxy:
+        build:
+            context: ./attackers
+            dockerfile: Dockerfile_proxy
+        container_name: "proxy_nuevo"
+        ports:
+            - "${PROXY_PORT}:8085"
+        cap_add:
+            - NET_ADMIN
+        privileged: true
+        command: >
+            sh -c "ip route del default via 172.31.0.2 &&
+                    ip route add default via 172.31.0.1 &&
+                    nginx -g 'daemon off;'"
+        networks:
+            external:
+                ipv4_address: 172.31.0.120
+    
+
+    honeypot_web:
+        image: nginx:latest
+        container_name: honeypot_nuevo
+        volumes:
+            - ./honeypot/Frontend:/usr/share/nginx/html:ro 
+            - ./honeypot/nginx_logs:/var/log/nginx
+            - ./honeypot/nginx.conf:/etc/nginx/nginx.conf 
+        privileged: true
+        command: >
+            bash -c '
+            apt update &&
+            apt install -y iproute2 net-tools iputils-ping curl traceroute &&
+            ip route del default via 172.16.0.2 &&
+            ip route add default via 172.16.0.1 &&
+            nginx -g "daemon off;"'
+        networks:
+            fake:
+                ipv4_address: 172.16.0.14
+
+  
+    kibana:
+        image: docker.elastic.co/kibana/kibana:8.5.1
+        container_name: kibana_nuevo
+        privileged: true
+        user: "0:0"
+        command: >
+            bash -c "apt update && 
+            apt install -y iproute2 iputils-ping && 
+            ip route del default via 172.16.0.2 &&
+            ip route add default via 172.16.0.1 &&
+            kibana --allow-root"
+        environment:
+            - node.name=kibana
+            - cluster.name=docker-cluster
+            - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+        ports:
+            - "${KIBANA_PORT}:5601"
+        networks:
+            fake:
+                ipv4_address: 172.16.0.12
+        depends_on:
+            - elasticsearch
+            
+
+    filebeat:
+        build:
+            context: ./filebeat 
+            dockerfile: Dockerfile_filebeat
+        container_name: filebeat_nuevo
+        command: "filebeat -e -strict.perms=false"
+        privileged: true
+        volumes:
+            - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+            - ./nginx_logs:/var/log/nginx:ro
+            - ./suricata/suricata_logs/eve.json:/var/log/suricata/eve.json:ro
+        ports:
+            - 900:9000
+        networks:
+            fake:
+                ipv4_address: 172.16.0.11
+
+    elasticsearch:
+        build: 
+            context: ./elasticsearch
+            dockerfile: Dockerfile_elasticsearch
+        container_name: elasticsearch_nuevo
+        command: >
+            bash -c "sudo ip route del default via 172.16.0.2 &&
+            sudo ip route add default via 172.16.0.1 &&
+            elasticsearch"
+        environment:
+            - node.name=${ELASTICSEARCH_NODE_NAME}
+            - cluster.name=${ELASTICSEARCH_CLUSTER_NAME}
+            - discovery.type=single-node
+            - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+        volumes:
+            - ./elasticsearch/data:/usr/share/elasticsearch/data
+            - ./elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+        ports:
+            - "${ELASTICSEARCH_PORT}:9200"
+        networks:
+            fake:
+                ipv4_address: 172.16.0.13
+        privileged: true
+
+    
+        
+
+networks:
+    external:
+        name: external
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 172.31.0.0/24
+                  gateway: 172.31.0.2
+    internal:
+        name: internal
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 10.10.0.0/24
+                  gateway: 10.10.0.2
+    middleNet:
+        name: middleNet
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 10.10.1.0/24
+                  gateway: 10.10.1.2
+    fake:
+        name: fake
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 172.16.0.0/24
+                  gateway: 172.16.0.2
+    real:
+        name: real
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 10.10.2.0/24
+                  gateway: 10.10.2.2
